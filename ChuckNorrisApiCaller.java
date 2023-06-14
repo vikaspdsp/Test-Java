@@ -15,13 +15,18 @@ public class ChuckNorrisApiCaller {
 
             if (responseCode == HttpURLConnection.HTTP_OK) {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                String line;
                 StringBuilder response = new StringBuilder();
+                String line;
                 while ((line = reader.readLine()) != null) {
                     response.append(line);
                 }
                 reader.close();
-                System.out.println(response.toString());
+
+                String jsonResponse = response.toString();
+
+                // Print the Chuck Norris joke
+                System.out.println("Chuck Norris Joke:");
+                System.out.println(jsonResponse);
             } else {
                 System.out.println("Error: " + responseCode);
             }
